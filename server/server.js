@@ -1,20 +1,29 @@
 // server.js
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config(); // Load environment variables from a .env file
+require('dotenv').config(); // load environment variables from a .env file
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 
-// Middleware
+// middleware
 app.use(cors());
 
-// Routes
+// routes
 app.get('/', (request, response) => {
   response.send('Testing 123');
 });
 
-// Start the server
+// start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on port ${PORT}`);
+});
+
+const data = require("./data/weather.json");
+
+app.get("/weather", (request, response) => {
+  const lat = request.query.lat;
+  const lon = request.query.lon;
+  const searchQuery = request.query.searchQuery;
+  
 });
